@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHoxjahon & Mubina — To'y Taklifi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- =====================================================
+     FIXED UI
+===================================================== -->
+<div id="lang-switcher">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="uz">UZ</button>
+  <button class="lang-btn" data-lang="ru">RU</button>
+</div>
+
+<button id="music-btn" title="Toggle music" aria-label="Toggle background music">♪</button>
+<!-- SWAP: replace this src with your own MP3 -->
+<audio id="bg-audio" loop src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+
+<!-- Floating petal/particle canvas -->
+<canvas id="petals-canvas"></canvas>
+
+<!-- =====================================================
+     ENVELOPE OVERLAY
+===================================================== -->
+<div id="envelope-overlay">
+  <div id="envelope">
+    <div class="env-back"></div>
+    <div class="env-flap" id="envFlap"></div>
+    <div class="env-body">
+      <div class="env-inner-content">
+        <svg class="env-ornament" viewBox="0 0 120 24" aria-hidden="true">
+          <line x1="0" y1="12" x2="42" y2="12" stroke="#C9A84C" stroke-width="1" opacity="0.7"/>
+          <polygon points="50,12 56,6 62,12 56,18" fill="#C9A84C" opacity="0.8"/>
+          <circle cx="67" cy="12" r="3" fill="#C9A84C" opacity="0.6"/>
+          <polygon points="72,12 78,6 84,12 78,18" fill="#C9A84C" opacity="0.8"/>
+          <line x1="92" y1="12" x2="120" y2="12" stroke="#C9A84C" stroke-width="1" opacity="0.7"/>
+        </svg>
+        <p class="env-text" data-i18n="env_inner">Wedding Invitation</p>
+        <p class="env-names">S &amp; M</p>
+        <svg class="env-ornament" viewBox="0 0 120 24" aria-hidden="true">
+          <line x1="0" y1="12" x2="42" y2="12" stroke="#C9A84C" stroke-width="1" opacity="0.7"/>
+          <polygon points="50,12 56,6 62,12 56,18" fill="#C9A84C" opacity="0.8"/>
+          <circle cx="67" cy="12" r="3" fill="#C9A84C" opacity="0.6"/>
+          <polygon points="72,12 78,6 84,12 78,18" fill="#C9A84C" opacity="0.8"/>
+          <line x1="92" y1="12" x2="120" y2="12" stroke="#C9A84C" stroke-width="1" opacity="0.7"/>
+        </svg>
+      </div>
+    </div>
+    <!-- Wax seal -->
+    <div class="env-seal" id="envSeal">
+      <svg viewBox="0 0 70 70" class="seal-bg" aria-hidden="true">
+        <!-- 8-point star -->
+        <path d="M35,4 L39,22 L56,8 L46,25 L64,28 L48,36 L60,50 L43,45 L42,64 L35,49 L28,64 L27,45 L10,50 L22,36 L6,28 L24,25 L14,8 L31,22 Z" fill="#C9A84C" opacity="0.95"/>
+        <circle cx="35" cy="35" r="17" fill="#1a2d5a"/>
+        <circle cx="35" cy="35" r="14" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
+      </svg>
+      <span class="seal-text">S&amp;M</span>
+    </div>
+  </div>
+  <p class="env-hint" data-i18n="env_hint">Click the seal to open</p>
+</div>
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+<main id="main-content">
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <canvas id="sparkle-canvas"></canvas>
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-i18n="save_the_date">Save the Date</p>
+
+      <!-- Decorative arch frame -->
+      <div class="hero-arch" aria-hidden="true">
+        <svg viewBox="0 0 440 200" preserveAspectRatio="xMidYMid meet">
+          <path d="M30,195 L30,90 Q30,15 220,15 Q410,15 410,90 L410,195"
+                fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.35"/>
+          <path d="M55,195 L55,95 Q55,40 220,40 Q385,40 385,95 L385,195"
+                fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.18"/>
+          <!-- Keystone diamond -->
+          <polygon points="220,10 226,18 220,26 214,18" fill="#C9A84C" opacity="0.55"/>
+          <!-- Corner rosettes -->
+          <circle cx="30"  cy="195" r="5" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="410" cy="195" r="5" fill="#C9A84C" opacity="0.4"/>
+          <!-- Side hanging dots -->
+          <circle cx="30"  cy="120" r="3" fill="#C9A84C" opacity="0.25"/>
+          <circle cx="410" cy="120" r="3" fill="#C9A84C" opacity="0.25"/>
+        </svg>
+      </div>
+
+      <div class="hero-names">
+        <span class="name-one" data-i18n="bride_name">Mubina</span>
+        <span class="hero-amp">
+          <svg viewBox="0 0 44 44" width="38" height="38" aria-hidden="true">
+            <circle cx="22" cy="22" r="20" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            <circle cx="22" cy="22" r="14" fill="#1a2d5a"/>
+            <ellipse cx="22" cy="9"  rx="3.5" ry="6" fill="#C9A84C" opacity="0.8"/>
+            <ellipse cx="22" cy="35" rx="3.5" ry="6" fill="#C9A84C" opacity="0.8"/>
+            <ellipse cx="9"  cy="22" rx="6" ry="3.5" fill="#C9A84C" opacity="0.8"/>
+            <ellipse cx="35" cy="22" rx="6" ry="3.5" fill="#C9A84C" opacity="0.8"/>
+            <ellipse cx="13" cy="13" rx="3" ry="5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,13,13)"/>
+            <ellipse cx="31" cy="13" rx="3" ry="5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,31,13)"/>
+            <ellipse cx="13" cy="31" rx="3" ry="5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,13,31)"/>
+            <ellipse cx="31" cy="31" rx="3" ry="5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,31,31)"/>
+            <circle cx="22" cy="22" r="4" fill="#C9A84C"/>
+            <circle cx="22" cy="22" r="2" fill="#e8f4fc"/>
+          </svg>
+        </span>
+        <span class="name-two" data-i18n="groom_name">SHoxjahon</span>
+      </div>
+
+      <p class="hero-date" data-i18n="wedding_date">July 30, 2026</p>
+      <p class="hero-venue" data-i18n="venue_short">Baxt uyi &nbsp;·&nbsp; Tashkent</p>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22">
+        <polyline points="6 9 12 15 18 9" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── DIVIDER ── -->
+  <div class="orn-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 48" preserveAspectRatio="xMidYMid meet">
+      <line x1="0"   y1="24" x2="310" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <line x1="490" y1="24" x2="800" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <g transform="translate(400,24)">
+        <circle r="16" fill="#162444" stroke="#C9A84C" stroke-width="1" opacity="0.8"/>
+        <ellipse cx="0" cy="-9"  rx="3" ry="5.5" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="0" cy="9"   rx="3" ry="5.5" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="-9" cy="0"  rx="5.5" ry="3" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="9"  cy="0"  rx="5.5" ry="3" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="-6" cy="-6" rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,-6,-6)"/>
+        <ellipse cx="6"  cy="-6" rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,6,-6)"/>
+        <ellipse cx="-6" cy="6"  rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,-6,6)"/>
+        <ellipse cx="6"  cy="6"  rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,6,6)"/>
+        <circle r="4.5" fill="#C9A84C"/>
+        <circle r="2"   fill="#e8f4fc"/>
+      </g>
+      <!-- Small diamond accents -->
+      <polygon points="330,24 337,17 344,24 337,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.45"/>
+      <polygon points="456,24 463,17 470,24 463,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.45"/>
+      <circle cx="360" cy="24" r="2" fill="#C9A84C" opacity="0.35"/>
+      <circle cx="440" cy="24" r="2" fill="#C9A84C" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- ── COUNTDOWN ── -->
+  <section id="countdown" class="fade-section">
+    <div class="section-head">
+      <h2 class="section-title" data-i18n="countdown_title">Counting Down</h2>
+      <div class="title-rule"></div>
+    </div>
+    <div class="countdown-grid">
+      <div class="cd-card">
+        <span id="cd-days">00</span>
+        <label data-i18n="days">Days</label>
+      </div>
+      <div class="cd-card">
+        <span id="cd-hours">00</span>
+        <label data-i18n="hours">Hours</label>
+      </div>
+      <div class="cd-card">
+        <span id="cd-mins">00</span>
+        <label data-i18n="minutes">Minutes</label>
+      </div>
+      <div class="cd-card">
+        <span id="cd-secs">00</span>
+        <label data-i18n="seconds">Seconds</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIVIDER ── -->
+  <div class="orn-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 48" preserveAspectRatio="xMidYMid meet">
+      <line x1="0"   y1="24" x2="310" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <line x1="490" y1="24" x2="800" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <g transform="translate(400,24)">
+        <circle r="14" fill="#162444" stroke="#7EB8D4" stroke-width="1" opacity="0.7"/>
+        <ellipse cx="0" cy="-8"  rx="2.8" ry="5" fill="#7EB8D4" opacity="0.8"/>
+        <ellipse cx="0" cy="8"   rx="2.8" ry="5" fill="#7EB8D4" opacity="0.8"/>
+        <ellipse cx="-8" cy="0"  rx="5" ry="2.8" fill="#7EB8D4" opacity="0.8"/>
+        <ellipse cx="8"  cy="0"  rx="5" ry="2.8" fill="#7EB8D4" opacity="0.8"/>
+        <ellipse cx="-5.5" cy="-5.5" rx="2.5" ry="4" fill="#C9A84C" opacity="0.7" transform="rotate(45,-5.5,-5.5)"/>
+        <ellipse cx="5.5"  cy="-5.5" rx="2.5" ry="4" fill="#C9A84C" opacity="0.7" transform="rotate(-45,5.5,-5.5)"/>
+        <ellipse cx="-5.5" cy="5.5"  rx="2.5" ry="4" fill="#C9A84C" opacity="0.7" transform="rotate(-45,-5.5,5.5)"/>
+        <ellipse cx="5.5"  cy="5.5"  rx="2.5" ry="4" fill="#C9A84C" opacity="0.7" transform="rotate(45,5.5,5.5)"/>
+        <circle r="4" fill="#7EB8D4"/>
+        <circle r="1.8" fill="#e8f4fc"/>
+      </g>
+      <polygon points="340,24 347,17 354,24 347,31" fill="none" stroke="#7EB8D4" stroke-width="0.8" opacity="0.4"/>
+      <polygon points="446,24 453,17 460,24 453,31" fill="none" stroke="#7EB8D4" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="370" cy="24" r="2" fill="#7EB8D4" opacity="0.3"/>
+      <circle cx="430" cy="24" r="2" fill="#7EB8D4" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <!-- ── GALLERY ── -->
+  <section id="gallery" class="fade-section">
+    <div class="section-head">
+      <h2 class="section-title" data-i18n="gallery_title">Our Story</h2>
+      <div class="title-rule"></div>
+    </div>
+    <div class="gallery-grid">
+      <!-- SWAP: Replace these Unsplash URLs with your own photo paths -->
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Couple photo 1" loading="lazy"/>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&q=80" alt="Couple photo 2" loading="lazy"/>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=600&q=80" alt="Couple photo 3" loading="lazy"/>
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" alt="Couple photo 4" loading="lazy"/>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Couple photo 5" loading="lazy"/>
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80" alt="Couple photo 6" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img id="lightbox-img" src="" alt="Enlarged photo" />
+  </div>
+
+  <!-- ── DIVIDER ── -->
+  <div class="orn-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 48" preserveAspectRatio="xMidYMid meet">
+      <line x1="0"   y1="24" x2="310" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <line x1="490" y1="24" x2="800" y2="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+      <g transform="translate(400,24)">
+        <circle r="16" fill="#162444" stroke="#C9A84C" stroke-width="1" opacity="0.8"/>
+        <ellipse cx="0" cy="-9"  rx="3" ry="5.5" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="0" cy="9"   rx="3" ry="5.5" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="-9" cy="0"  rx="5.5" ry="3" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="9"  cy="0"  rx="5.5" ry="3" fill="#C9A84C" opacity="0.75"/>
+        <ellipse cx="-6" cy="-6" rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,-6,-6)"/>
+        <ellipse cx="6"  cy="-6" rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,6,-6)"/>
+        <ellipse cx="-6" cy="6"  rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(-45,-6,6)"/>
+        <ellipse cx="6"  cy="6"  rx="2.5" ry="4.5" fill="#7EB8D4" opacity="0.7" transform="rotate(45,6,6)"/>
+        <circle r="4.5" fill="#C9A84C"/>
+        <circle r="2"   fill="#e8f4fc"/>
+      </g>
+      <polygon points="330,24 337,17 344,24 337,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.45"/>
+      <polygon points="456,24 463,17 470,24 463,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.45"/>
+      <circle cx="360" cy="24" r="2" fill="#C9A84C" opacity="0.35"/>
+      <circle cx="440" cy="24" r="2" fill="#C9A84C" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- ── SCHEDULE ── -->
+  <section id="schedule" class="fade-section">
+    <div class="section-head">
+      <h2 class="section-title" data-i18n="schedule_title">The Day</h2>
+      <div class="title-rule"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item fade-section">
+        <div class="tl-node">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1a2d5a" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10" cy="10" r="4" fill="#C9A84C"/></svg>
+        </div>
+        <div class="tl-card">
+          <span class="tl-time" data-i18n="tl1_time">14:00</span>
+          <h3 data-i18n="tl1_name">Arrival &amp; Welcome</h3>
+          <p data-i18n="tl1_desc">Greet guests with refreshments and music in the garden.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fade-section">
+        <div class="tl-node">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1a2d5a" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10" cy="10" r="4" fill="#C9A84C"/></svg>
+        </div>
+        <div class="tl-card">
+          <span class="tl-time" data-i18n="tl2_time">15:00</span>
+          <h3 data-i18n="tl2_name">Nikoh Ceremony</h3>
+          <p data-i18n="tl2_desc">Exchange of vows and rings under the floral arch.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fade-section">
+        <div class="tl-node">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1a2d5a" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10" cy="10" r="4" fill="#C9A84C"/></svg>
+        </div>
+        <div class="tl-card">
+          <span class="tl-time" data-i18n="tl3_time">16:00</span>
+          <h3 data-i18n="tl3_name">Photos</h3>
+          <p data-i18n="tl3_desc">Capture beautiful memories with family and friends.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fade-section">
+        <div class="tl-node">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1a2d5a" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10" cy="10" r="4" fill="#C9A84C"/></svg>
+        </div>
+        <div class="tl-card">
+          <span class="tl-time" data-i18n="tl4_time">17:30</span>
+          <h3 data-i18n="tl4_name">Festive Reception</h3>
+          <p data-i18n="tl4_desc">A grand feast — osh palov, toasts, and heartfelt speeches.</p>
+        </div>
+      </div>
+
+      <div class="tl-item fade-section">
+        <div class="tl-node">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#1a2d5a" stroke="#C9A84C" stroke-width="1.2"/><circle cx="10" cy="10" r="4" fill="#C9A84C"/></svg>
+        </div>
+        <div class="tl-card">
+          <span class="tl-time" data-i18n="tl5_time">20:00</span>
+          <h3 data-i18n="tl5_name">Music &amp; Dancing</h3>
+          <p data-i18n="tl5_desc">Dance to the doira and celebrate until the stars shine bright.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── DIVIDER ── -->
+  <div class="orn-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 48" preserveAspectRatio="xMidYMid meet">
+      <line x1="0"   y1="24" x2="310" y2="24" stroke="#7EB8D4" stroke-width="0.8" opacity="0.3"/>
+      <line x1="490" y1="24" x2="800" y2="24" stroke="#7EB8D4" stroke-width="0.8" opacity="0.3"/>
+      <g transform="translate(400,24)">
+        <circle r="18" fill="#162444" stroke="#C9A84C" stroke-width="1.2" opacity="0.9"/>
+        <ellipse cx="0" cy="-11" rx="3.5" ry="7"   fill="#C9A84C" opacity="0.8"/>
+        <ellipse cx="0" cy="11"  rx="3.5" ry="7"   fill="#C9A84C" opacity="0.8"/>
+        <ellipse cx="-11" cy="0" rx="7" ry="3.5"   fill="#C9A84C" opacity="0.8"/>
+        <ellipse cx="11"  cy="0" rx="7" ry="3.5"   fill="#C9A84C" opacity="0.8"/>
+        <ellipse cx="-7.5" cy="-7.5" rx="3" ry="5" fill="#7EB8D4" opacity="0.8" transform="rotate(45,-7.5,-7.5)"/>
+        <ellipse cx="7.5"  cy="-7.5" rx="3" ry="5" fill="#7EB8D4" opacity="0.8" transform="rotate(-45,7.5,-7.5)"/>
+        <ellipse cx="-7.5" cy="7.5"  rx="3" ry="5" fill="#7EB8D4" opacity="0.8" transform="rotate(-45,-7.5,7.5)"/>
+        <ellipse cx="7.5"  cy="7.5"  rx="3" ry="5" fill="#7EB8D4" opacity="0.8" transform="rotate(45,7.5,7.5)"/>
+        <circle r="6" fill="#C9A84C"/>
+        <circle r="2.5" fill="#e8f4fc"/>
+      </g>
+      <polygon points="335,24 342,17 349,24 342,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+      <polygon points="451,24 458,17 465,24 458,31" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="365" cy="24" r="2.5" fill="#C9A84C" opacity="0.35"/>
+      <circle cx="435" cy="24" r="2.5" fill="#C9A84C" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer" class="fade-section">
+    <div class="footer-top-bar" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <p class="footer-venue" data-i18n="venue">Baxt uyi, Tashkent</p>
+      <p class="footer-date"  data-i18n="wedding_date">July 30, 2026</p>
+
+      <!-- Footer rosette -->
+      <div class="footer-rosette" aria-hidden="true">
+        <svg viewBox="0 0 72 72" width="56" height="56">
+          <circle cx="36" cy="36" r="35" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.3"/>
+          <circle cx="36" cy="36" r="14" fill="#162444" stroke="#C9A84C" stroke-width="1" opacity="0.8"/>
+          <ellipse cx="36" cy="18" rx="4" ry="9"  fill="#C9A84C" opacity="0.7"/>
+          <ellipse cx="36" cy="54" rx="4" ry="9"  fill="#C9A84C" opacity="0.7"/>
+          <ellipse cx="18" cy="36" rx="9" ry="4"  fill="#C9A84C" opacity="0.7"/>
+          <ellipse cx="54" cy="36" rx="9" ry="4"  fill="#C9A84C" opacity="0.7"/>
+          <ellipse cx="23" cy="23" rx="4" ry="7"  fill="#7EB8D4" opacity="0.65" transform="rotate(45,23,23)"/>
+          <ellipse cx="49" cy="23" rx="4" ry="7"  fill="#7EB8D4" opacity="0.65" transform="rotate(-45,49,23)"/>
+          <ellipse cx="23" cy="49" rx="4" ry="7"  fill="#7EB8D4" opacity="0.65" transform="rotate(-45,23,49)"/>
+          <ellipse cx="49" cy="49" rx="4" ry="7"  fill="#7EB8D4" opacity="0.65" transform="rotate(45,49,49)"/>
+          <circle cx="36" cy="36" r="6" fill="#C9A84C"/>
+          <circle cx="36" cy="36" r="2.5" fill="#e8f4fc"/>
+        </svg>
+      </div>
+
+      <p class="footer-quote" data-i18n="footer_quote">"Ikki ko'ngilning birlashgan joyi — baxtning boshlanishi."</p>
+      <p class="footer-signed" data-i18n="footer_signed">SHoxjahon &amp; Mubina</p>
+    </div>
+  </footer>
+
+</main>
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — Navy Blue Comfort Palette
+   Navy base:    #0d1b38  (darkest bg)
+   Navy mid:     #112247  (section bg)
+   Navy card:    #162444  (card bg)
+   Navy lift:    #1a2d5a  (elevated card)
+   Sky accent:   #7EB8D4  (soft blue highlight)
+   Gold:         #C9A84C  (warm gold — not harsh)
+   Gold pale:    #e8d08a  (text gold)
+   Ivory text:   #e8f4fc  (primary text)
+   Muted text:   #9bb8d4  (secondary text)
+============================================================ */
+:root {
+  --navy-0:    #0d1b38;
+  --navy-1:    #112247;
+  --navy-2:    #162444;
+  --navy-3:    #1a2d5a;
+  --navy-4:    #223570;
+  --sky:       #7EB8D4;
+  --sky-lt:    #aed5e8;
+  --gold:      #C9A84C;
+  --gold-lt:   #e8d08a;
+  --gold-glow: rgba(201,168,76,0.18);
+  --ivory:     #e8f4fc;
+  --ivory-dim: #9bb8d4;
+  --white:     #ffffff;
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.25);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 56px rgba(0,0,0,0.45);
+  --ff-h:      'Playfair Display', serif;
+  --ff-s:      'Cormorant Garamond', serif;
+  --ff-b:      'Montserrat', sans-serif;
+  --radius:    16px;
+  --radius-sm: 10px;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--ff-b);
+  background: var(--navy-0);
+  color: var(--ivory);
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.scroll-locked { overflow: hidden; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ── PARTICLE CANVAS ── */
+#petals-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   LANGUAGE SWITCHER
+============================================================ */
+#lang-switcher {
+  position: fixed;
+  top: 1.1rem;
+  right: 1.1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.2rem;
+  background: rgba(22,36,68,0.92);
+  padding: 0.3rem 0.45rem;
+  border-radius: 50px;
+  border: 1px solid rgba(201,168,76,0.22);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn {
+  font-family: var(--ff-b);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ivory-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.28rem 0.6rem;
+  border-radius: 50px;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-btn.active,
+.lang-btn:hover {
+  background: var(--gold);
+  color: var(--navy-0);
+}
+
+/* ============================================================
+   MUSIC BUTTON
+============================================================ */
+#music-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--navy-3);
+  color: var(--gold);
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm), 0 0 0 4px var(--gold-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s;
+}
+#music-btn.playing { animation: spin 5s linear infinite; }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   ENVELOPE OVERLAY
+============================================================ */
+#envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: radial-gradient(ellipse at 50% 55%, #1a2d5a 0%, #0d1b38 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+/* Subtle dot grid on envelope bg */
+#envelope-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+#envelope-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#envelope {
+  position: relative;
+  width: min(400px, 92vw);
+  height: min(280px, 70vw);
+  perspective: 1000px;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.55));
+}
+
+/* ── Envelope back face ── */
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, #1e3566 0%, #162955 50%, #112040 100%);
+  border-radius: 6px 6px 8px 8px;
+  border: 1px solid rgba(201,168,76,0.3);
+  z-index: 1;
+}
+.env-back::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* ── Flap ── */
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54%;
+  background: linear-gradient(170deg, #223570, #1a2d5a);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 4;
+  border-top: 1px solid rgba(201,168,76,0.25);
+}
+
+/* ── Body lower ── */
+.env-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 58%;
+  background: linear-gradient(175deg, #1a2d5a, #162444);
+  border-radius: 0 0 8px 8px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+  border-left:   1px solid rgba(201,168,76,0.15);
+  border-right:  1px solid rgba(201,168,76,0.15);
+}
+
+.env-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.env-ornament { width: 120px; height: 24px; }
+
+.env-text {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(0.9rem, 3vw, 1.15rem);
+  color: var(--gold-lt);
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+.env-names {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(1.3rem, 4.5vw, 1.7rem);
+  color: var(--ivory);
+  letter-spacing: 0.06em;
+  font-weight: 300;
+}
+
+/* ── Wax seal ── */
+.env-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: sealGlow 2.8s ease-in-out infinite;
+  transition: transform 0.25s;
+}
+.env-seal:hover { transform: translate(-50%, -50%) scale(1.1); }
+
+.seal-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 14px rgba(201,168,76,0.5));
+}
+
+.seal-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ivory);
+  letter-spacing: 0.03em;
+}
+
+@keyframes sealGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(201,168,76,0.3)); }
+  50%       { filter: drop-shadow(0 0 22px rgba(201,168,76,0.7)); }
+}
+
+#envelope.opened .env-flap {
+  transform: rotateX(-178deg);
+  z-index: 2;
+}
+#envelope.opened .env-seal {
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+
+.env-hint {
+  font-family: var(--ff-b);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.6;
+  animation: gentleFade 1.5s ease forwards;
+}
+
+@keyframes gentleFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 0.6; transform: translateY(0); }
+}
+</style>
+
+<style>
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+#main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  /* Soft layered navy gradient */
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(34,53,112,0.5) 0%, transparent 70%),
+    linear-gradient(175deg, #0f2040 0%, #0d1b38 50%, #091528 100%);
+}
+
+/* Ambient dot grid */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(126,184,212,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soft radial glow in center */
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 60vh;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#sparkle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 4rem 2rem;
+}
+
+.hero-arch {
+  position: absolute;
+  width: clamp(240px, 55vw, 460px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.65;
+  z-index: 0;
+}
+.hero-arch svg { width: 100%; height: auto; }
+
+/* All hero text above arch */
+.hero-inner > *:not(.hero-arch) { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+  font-family: var(--ff-b);
+  font-size: clamp(0.6rem, 2vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--sky);
+  opacity: 0.9;
+}
+
+.hero-names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2.5vw, 1.4rem);
+  line-height: 1;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.name-one,
+.name-two {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(3rem, 10.5vw, 7rem);
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: -0.01em;
+  /* Subtle gold glow on names */
+  text-shadow:
+    0 0 40px rgba(201,168,76,0.2),
+    0 2px 12px rgba(0,0,0,0.4);
+}
+
+.hero-amp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+}
+
+.hero-date {
+  font-family: var(--ff-h);
+  font-size: clamp(0.95rem, 3vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--gold-lt);
+  margin-top: 0.4rem;
+}
+
+.hero-venue {
+  font-family: var(--ff-b);
+  font-size: clamp(0.62rem, 1.8vw, 0.76rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sky);
+  opacity: 0.7;
+  margin-top: 0.1rem;
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: bounce 2.2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(7px); }
+}
+
+/* ============================================================
+   ORNAMENTAL DIVIDERS
+============================================================ */
+.orn-divider {
+  width: 100%;
+  max-width: 800px;
+  margin: 0.5rem auto;
+  height: 48px;
+  padding: 0 1rem;
+}
+.orn-divider svg { width: 100%; height: 100%; }
+
+/* ============================================================
+   FADE IN ON SCROLL
+============================================================ */
+.fade-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SECTION HEADER
+============================================================ */
+.section-head {
+  text-align: center;
+  margin-bottom: 2.8rem;
+}
+
+.section-title {
+  font-family: var(--ff-h);
+  font-size: clamp(1.55rem, 5vw, 2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ivory);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.7rem;
+}
+
+.title-rule {
+  width: 80px;
+  height: 2px;
+  margin: 0 auto;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   COUNTDOWN
+============================================================ */
+#countdown {
+  padding: 5rem 1.5rem;
+  background: var(--navy-1);
+  position: relative;
+}
+
+/* Subtle top/bottom fade borders */
+#countdown::before, #countdown::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 60px;
+  pointer-events: none;
+}
+#countdown::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--navy-0), transparent);
+}
+#countdown::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--navy-0), transparent);
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cd-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.22);
+  border-radius: var(--radius);
+  padding: 1.8rem 0.5rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft gold glow on top edge */
+.cd-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+.cd-card:hover {
+  border-color: rgba(201,168,76,0.45);
+  box-shadow: var(--shadow-md), 0 0 24px rgba(201,168,76,0.08);
+}
+
+.cd-card span {
+  font-family: var(--ff-h);
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gold-lt);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cd-card label {
+  font-family: var(--ff-b);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  font-weight: 500;
+}
+</style>
+
+<style>
+/* ============================================================
+   GALLERY
+============================================================ */
+#gallery {
+  padding: 5rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  gap: 1rem;
+}
+
+.gallery-item {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  /* Navy border + gold outer ring */
+  box-shadow:
+    0 0 0 3px var(--navy-2),
+    0 0 0 4.5px rgba(201,168,76,0.28),
+    var(--shadow-md);
+  transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s;
+}
+
+.gallery-item.tall { grid-row: span 2; }
+.gallery-item.wide { grid-column: span 2; }
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(13,27,56,0.55) 100%);
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow:
+    0 0 0 3px var(--navy-2),
+    0 0 0 4.5px var(--gold),
+    var(--shadow-lg);
+  z-index: 2;
+}
+
+.gallery-item img {
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.07); }
+
+/* Lightbox */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(5, 12, 30, 0.94);
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+#lightbox.active { display: flex; }
+
+#lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow:
+    0 0 0 3px var(--navy-2),
+    0 0 0 5px rgba(201,168,76,0.4),
+    0 24px 80px rgba(0,0,0,0.7);
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 2.4rem;
+  color: var(--gold-lt);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.25s;
+}
+#lightbox-close:hover { opacity: 1; transform: scale(1.1) rotate(90deg); }
+
+/* ============================================================
+   TIMELINE
+============================================================ */
+#schedule {
+  padding: 5rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+
+/* Vertical connector line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.62rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: linear-gradient(to bottom,
+    rgba(201,168,76,0.08),
+    rgba(201,168,76,0.5) 20%,
+    rgba(201,168,76,0.5) 80%,
+    rgba(201,168,76,0.08));
+  border-radius: 2px;
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+.tl-item:last-child { margin-bottom: 0; }
+
+.tl-node {
+  position: absolute;
+  left: -2.4rem;
+  top: 0.15rem;
+  width: 22px;
+  height: 22px;
+  background: var(--navy-0);
+}
+.tl-node svg { width: 100%; height: 100%; }
+
+.tl-card {
+  background: var(--navy-2);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem 1.5rem;
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left accent stripe */
+.tl-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold), var(--sky));
+  border-radius: 3px 0 0 3px;
+}
+
+.tl-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(201,168,76,0.06);
+  transform: translateX(3px);
+}
+
+.tl-time {
+  font-family: var(--ff-b);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.28rem;
+}
+
+.tl-card h3 {
+  font-family: var(--ff-h);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ivory);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+.tl-card p {
+  font-size: 0.84rem;
+  color: var(--ivory-dim);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+#footer {
+  text-align: center;
+  background: var(--navy-1);
+  position: relative;
+  overflow: hidden;
+}
+
+#footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.4), transparent);
+}
+
+/* Ambient glow in footer */
+#footer::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 200px;
+  background: radial-gradient(ellipse at bottom, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.footer-top-bar {
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--gold) 20%, var(--sky) 50%, var(--gold) 80%, transparent);
+  opacity: 0.55;
+}
+
+.footer-inner {
+  padding: 4rem 1.5rem 5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-venue {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+  color: var(--ivory);
+  font-weight: 300;
+  text-shadow: 0 0 32px rgba(201,168,76,0.2);
+}
+
+.footer-date {
+  font-family: var(--ff-b);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.75;
+  margin-bottom: 0.8rem;
+}
+
+.footer-rosette {
+  display: flex;
+  justify-content: center;
+  margin: 0.6rem 0;
+}
+
+.footer-quote {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(1rem, 3.5vw, 1.28rem);
+  color: var(--ivory);
+  opacity: 0.6;
+  max-width: 460px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.footer-signed {
+  font-family: var(--ff-s);
+  font-style: italic;
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  color: var(--gold-lt);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-top: 0.6rem;
+  text-shadow: 0 0 20px rgba(201,168,76,0.3);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 640px) {
+  .countdown-grid { gap: 0.6rem; }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+  }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 1; }
+
+  .timeline { padding-left: 2.4rem; }
+  .tl-node  { left: -1.9rem; }
+  .tl-card  { padding: 1rem 1.1rem; }
+}
+
+@media (max-width: 380px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+  .gallery-item.wide { grid-column: span 1; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fade-section { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .scroll-cue   { animation: none; }
+  #music-btn.playing { animation: none; }
+  .env-seal     { animation: none; }
+  .env-hint     { animation: none; opacity: 0.6; }
+}
+</style>
+
+<script>
+/* ============================================================
+   TRANSLATIONS
+============================================================ */
+const translations = {
+  en: {
+    save_the_date:   "Save the Date",
+    bride_name:      "Mubina",
+    groom_name:      "SHoxjahon",
+    wedding_date:    "July 30, 2026",
+    venue_short:     "Baxt uyi · Tashkent",
+    countdown_title: "Counting Down",
+    days:    "Days",    hours:   "Hours",
+    minutes: "Minutes", seconds: "Seconds",
+    gallery_title:   "Our Story",
+    schedule_title:  "The Day",
+    tl1_time: "14:00", tl1_name: "Arrival & Welcome",
+    tl1_desc: "Greet guests with refreshments and music in the garden.",
+    tl2_time: "15:00", tl2_name: "Nikoh Ceremony",
+    tl2_desc: "Exchange of vows and rings under the floral arch.",
+    tl3_time: "16:00", tl3_name: "Photos",
+    tl3_desc: "Capture beautiful memories with family and friends.",
+    tl4_time: "17:30", tl4_name: "Festive Reception",
+    tl4_desc: "A grand feast — osh palov, toasts, and heartfelt speeches.",
+    tl5_time: "20:00", tl5_name: "Music & Dancing",
+    tl5_desc: "Dance to the doira and celebrate until the stars shine bright.",
+    venue:         "Baxt uyi, Tashkent",
+    footer_quote:  '"Ikki ko\'ngilning birlashgan joyi — baxtning boshlanishi."',
+    footer_signed: "SHoxjahon & Mubina",
+    env_inner:     "Wedding Invitation",
+    env_hint:      "Click the seal to open",
+  },
+  uz: {
+    save_the_date:   "Sanani Eslab Qoling",
+    bride_name:      "Mubina",
+    groom_name:      "SHoxjahon",
+    wedding_date:    "30-iyul, 2026",
+    venue_short:     "Baxt uyi · Toshkent",
+    countdown_title: "Sanab Boramiz",
+    days:    "Kun",    hours:   "Soat",
+    minutes: "Daqiqa", seconds: "Soniya",
+    gallery_title:   "Bizning Hikoyamiz",
+    schedule_title:  "O'sha Kun Dasturi",
+    tl1_time: "14:00", tl1_name: "Kutib olish",
+    tl1_desc: "Mehmonlarni bog'da musiqali dasturxon bilan kutib olamiz.",
+    tl2_time: "15:00", tl2_name: "Nikoh marosimi",
+    tl2_desc: "Guldor ravaq ostida nikoh o'qilib, uzuk kiydiriladigan muqaddas lahzalar.",
+    tl3_time: "16:00", tl3_name: "Suratga tushish",
+    tl3_desc: "Oila va do'stlar bilan qimmatli xotiralarni abadiylashtirish.",
+    tl4_time: "17:30", tl4_name: "To'y ziyofati",
+    tl4_desc: "Osh palov va milliy taomlar bilan bezangan tantanali ziyofat.",
+    tl5_time: "20:00", tl5_name: "Musiqa va Raqs",
+    tl5_desc: "Doira va g'ijjak sadolari ostida kechani nishonlaymiz.",
+    venue:         "Baxt uyi, Toshkent",
+    footer_quote:  '"Ikki ko\'ngilning birlashgan joyi — baxtning boshlanishi."',
+    footer_signed: "SHoxjahon & Mubina",
+    env_inner:     "To'y Taklifi",
+    env_hint:      "Muhrni bosing",
+  },
+  ru: {
+    save_the_date:   "Запомните Дату",
+    bride_name:      "Мубина",
+    groom_name:      "Шохжахон",
+    wedding_date:    "30 июля 2026",
+    venue_short:     "Бахт уйи · Ташкент",
+    countdown_title: "Обратный Отсчёт",
+    days:    "Дней",   hours:   "Часов",
+    minutes: "Минут",  seconds: "Секунд",
+    gallery_title:   "Наша История",
+    schedule_title:  "Программа Дня",
+    tl1_time: "14:00", tl1_name: "Встреча гостей",
+    tl1_desc: "Встречаем гостей угощениями и музыкой в саду.",
+    tl2_time: "15:00", tl2_name: "Никах",
+    tl2_desc: "Обмен клятвами и кольцами под цветочной аркой.",
+    tl3_time: "16:00", tl3_name: "Фотосессия",
+    tl3_desc: "Запечатлеваем воспоминания с семьёй и друзьями.",
+    tl4_time: "17:30", tl4_name: "Праздничный плов",
+    tl4_desc: "Торжественный стол: ош палов, тосты и тёплые речи.",
+    tl5_time: "20:00", tl5_name: "Музыка и Танцы",
+    tl5_desc: "Танцуем под дойру и отмечаем до самых звёзд.",
+    venue:         "Бахт уйи, Ташкент",
+    footer_quote:  '"Там, где соединяются два сердца — начинается счастье."',
+    footer_signed: "Шохжахон & Мубина",
+    env_inner:     "Свадебное Приглашение",
+    env_hint:      "Нажмите на печать",
+  }
+};
+
+/* ── Apply language ── */
+let currentLang = 'en';
+function applyLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+/* ============================================================
+   ENVELOPE
+============================================================ */
+const overlay  = document.getElementById('envelope-overlay');
+const envelope = document.getElementById('envelope');
+const seal     = document.getElementById('envSeal');
+document.body.classList.add('scroll-locked');
+
+function openEnvelope() {
+  if (envelope.classList.contains('opened')) return;
+  envelope.classList.add('opened');
+  setTimeout(() => {
+    overlay.classList.add('hidden');
+    document.body.classList.remove('scroll-locked');
+  }, 1300);
+}
+seal.addEventListener('click', openEnvelope);
+envelope.addEventListener('click', openEnvelope);
+
+/* ============================================================
+   COUNTDOWN  — July 30, 2026 20:00 Tashkent = 15:00 UTC
+============================================================ */
+const weddingDate = new Date('2026-07-30T15:00:00Z');
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function tick() {
+  const diff = weddingDate - Date.now();
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+      document.getElementById(id).textContent = '00';
+    });
+    return;
+  }
+  document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+  document.getElementById('cd-hours').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+  document.getElementById('cd-mins').textContent  = pad(Math.floor(diff % 3600000  / 60000));
+  document.getElementById('cd-secs').textContent  = pad(Math.floor(diff % 60000    / 1000));
+}
+tick();
+setInterval(tick, 1000);
+
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+const lightbox    = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lbClose     = document.getElementById('lightbox-close');
+
+document.querySelectorAll('.gallery-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLb() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+  lightboxImg.src = '';
+}
+lbClose.addEventListener('click', closeLb);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+/* ============================================================
+   SCROLL FADE-IN
+============================================================ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-section').forEach(el => io.observe(el));
+
+/* ============================================================
+   MUSIC
+============================================================ */
+const audio    = document.getElementById('bg-audio');
+const musicBtn = document.getElementById('music-btn');
+audio.volume   = 0.3;
+musicBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play().then(() => musicBtn.classList.add('playing')).catch(() => {});
+  } else {
+    audio.pause();
+    musicBtn.classList.remove('playing');
+  }
+});
+</script>
+
+<script>
+/* ============================================================
+   FLOATING PARTICLES — soft navy-gold dots & diamonds
+   Feels like gentle starlight / gold dust drifting down.
+   Respects prefers-reduced-motion.
+============================================================ */
+(function particles() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas  = document.getElementById('petals-canvas');
+  const ctx     = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  if (reduced) return;
+
+  /* Soft palette matching the navy design */
+  const COLORS = [
+    'rgba(201,168,76,',   // gold
+    'rgba(232,208,138,',  // pale gold
+    'rgba(126,184,212,',  // sky blue
+    'rgba(174,213,232,',  // light sky
+    'rgba(232,244,252,',  // near-white
+  ];
+  const COUNT = 38;
+
+  function make() {
+    const type = Math.random() < 0.45 ? 'dot' : 'diamond';
+    return {
+      x:    Math.random() * canvas.width,
+      y:    Math.random() * (canvas.height + 80) - 80,
+      vx:   (Math.random() - 0.5) * 0.6,
+      vy:   0.4 + Math.random() * 0.9,
+      rot:  Math.random() * Math.PI * 2,
+      vrot: (Math.random() - 0.5) * 0.03,
+      size: type === 'dot' ? 1.5 + Math.random() * 2.5 : 3 + Math.random() * 5,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: 0.15 + Math.random() * 0.35,
+      swing: Math.random() * Math.PI * 2,
+      swingSpd: 0.015 + Math.random() * 0.02,
+      type,
+    };
+  }
+
+  const pts = Array.from({ length: COUNT }, make);
+
+  function draw(p) {
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle   = p.color + p.alpha + ')';
+    ctx.shadowColor = p.color + '0.5)';
+    ctx.shadowBlur  = p.type === 'dot' ? 6 : 3;
+
+    if (p.type === 'dot') {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.beginPath();
+      ctx.moveTo(0, -p.size);
+      ctx.lineTo(p.size * 0.52, 0);
+      ctx.lineTo(0,  p.size);
+      ctx.lineTo(-p.size * 0.52, 0);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pts.forEach(p => {
+      p.swing += p.swingSpd;
+      p.x += p.vx + Math.sin(p.swing) * 0.4;
+      p.y += p.vy;
+      p.rot += p.vrot;
+      if (p.y > canvas.height + 30) {
+        Object.assign(p, make());
+        p.y = -20;
+      }
+      draw(p);
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ============================================================
+   SPARKLE CANVAS — twinkling stars around hero names
+   Respects prefers-reduced-motion.
+============================================================ */
+(function sparkles() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas  = document.getElementById('sparkle-canvas');
+  const ctx     = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth  || window.innerWidth;
+    canvas.height = canvas.offsetHeight || window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  if (reduced) return;
+
+  const COLORS = ['#C9A84C','#e8d08a','#e8f4fc','#7EB8D4','#aed5e8'];
+  const COUNT  = 50;
+
+  function make() {
+    const cx = canvas.width / 2;
+    const cy = canvas.height * 0.44;
+    const a  = Math.random() * Math.PI * 2;
+    const r  = 80 + Math.random() * 230;
+    return {
+      x:    cx + Math.cos(a) * r * 1.7,
+      y:    cy + Math.sin(a) * r * 0.48,
+      size: 1 + Math.random() * 2.6,
+      maxA: 0.25 + Math.random() * 0.55,
+      spd:  0.01 + Math.random() * 0.02,
+      offset: Math.random() * Math.PI * 2,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    };
+  }
+
+  const sparks = Array.from({ length: COUNT }, make);
+
+  function drawStar(x, y, r, a, color) {
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.fillStyle   = color;
+    ctx.shadowColor = color;
+    ctx.shadowBlur  = 10;
+    /* 4-point star */
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const ang  = (i * Math.PI) / 4;
+      const dist = i % 2 === 0 ? r : r * 0.3;
+      const px   = x + Math.cos(ang) * dist;
+      const py   = y + Math.sin(ang) * dist;
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  let f = 0;
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    f++;
+    sparks.forEach(s => {
+      const tw = (Math.sin(f * s.spd * 3 + s.offset) + 1) / 2;
+      drawStar(s.x, s.y, s.size, tw * s.maxA, s.color);
+      if (Math.random() < 0.0018) Object.assign(s, make());
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ── Init ── */
+applyLang('en');
+</script>
+
+</body>
+</html>
